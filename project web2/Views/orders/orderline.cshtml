@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "orderline";
+}
+
+
+<h1>orderline</h1>
+<hr/>
+@model IEnumerable<project_web2.Models.orderline>
+<h1>Order Detail</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.itemname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.itemquant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.itemprice)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.itemname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.itemquant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.itemprice)
+                </td>
+                <td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="MyOrder" class="btn btn-primary">Back to orders</a>
+   
+</p>

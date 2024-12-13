@@ -1,0 +1,52 @@
+﻿@model project_web2.Models.customer
+
+
+@{
+    ViewData["Title"] = "registration";
+}
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+
+<div class="container" style="height: 100vh;">
+    <div class="row justify-content-center align-items-center" style="height: 100%;">
+        <div class="col-md-4">
+            <h1 class="text-center">registration</h1>
+
+            <form asp-action="registration" onsubmit="return validateForm()">
+                <div class="form-group">name<input name="name" class="form-control" /></div>
+                <div class="form-group">Password<input name="pass" type="password" id="pass" class="form-control" required></div>
+                <div class="form-group">Confirm Password<input type="password" id="confpass" class="form-control" required></div>
+                <div class="form-group"> Email<input name="email" type="email" class="form-control" /></div>
+                Job:<select class="form-control" name="job">
+                    <option value="HighSchool">teacher</option>
+                    <option value="University">doctor</option>
+                    <option value="University">engineer</option>
+                </select>
+                <div class="form-group">
+                    <div class="checkbox"><label> <input type="radio" name="gender" value="male" /> Male</label></div>
+                    <div class="checkbox"><label> <input type="radio" name="gender" value="female" />Female</label></div>
+                </div>
+                <div class="form-group"><div class="checkbox"><label><input type="checkbox" name="married" /> married </label></div></div>
+                <div class="form-group"> location <textarea name="location" class="form-control" rows="4"></textarea> </div>
+                <div class="form-group"><input type="submit" value="Register" class="btn btn-primary" /> </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-center">@ViewData["Message"]</h2>
+
+<script>
+    function validateForm() {
+        var password = document.getElementById("pass").value;
+        var confirm_password = document.getElementById("confpass").value;
+        if (password != confirm_password) {
+            alert("Passwords do not match!");
+            return false;
+        }
+        return true;
+    }
+</script>

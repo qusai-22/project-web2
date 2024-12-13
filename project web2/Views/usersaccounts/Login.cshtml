@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+@{
+    Layout = null;
+}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('/image/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .login-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+</style>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form asp-action="Login">
+        <div class="form-group">
+            <label for="username" class="control-label">Username</label>
+            <input id="username" name="na" class="form-control" placeholder="Enter your username" />
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <input id="password" name="pa" type="password" class="form-control" placeholder="Enter your password" />
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="auto-login" name="auto" />
+            <label for="auto-login">Auto Login</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <p style="color:red">@ViewData["message"]</p>
+        <p>
+            Not registered? <a href="~/usersaccounts/registration">Register here</a>
+        </p>
+    </form>
+</div>

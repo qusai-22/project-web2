@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/layoutCustomer.cshtml";
+}
+@model IEnumerable<project_web2.Models.items>
+
+@{
+    ViewData["Title"] = "Customer Home";
+}
+
+<!-- Main Container -->
+<div class="container-fluid bg-dark text-white py-5">
+    <div class="text-center">
+        <h1 class="mb-3">Welcome, @ViewData["name"]!</h1>
+        <h2>Welcome to Shop</h2>
+        <p class="text-warning">OUR DISCOUNT ITEMS</p>
+    </div>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 my-3">
+                <div class="card border-primary shadow">
+                    <div class="card-header text-white bg-primary">
+                        <strong>ITEM #@item.Id</strong>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@item.name</h5>
+                        <img src="~/image/@item.imgfile" class="img-fluid rounded" alt="@item.name" style="height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-controller="items" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">More Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

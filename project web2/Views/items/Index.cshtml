@@ -1,0 +1,51 @@
+﻿@model IEnumerable<project_web2.Models.items>
+@{
+    Layout = "~/Views/Shared/layoutMaster.cshtml";
+}
+
+<h1>items</h1>
+<p>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insertModal"> New Item</button
+    @await Html.PartialAsync("insertitem",new items())
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+ 
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+           
+                @Html.DisplayNameFor(model => model.imgfile)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+      
+            <td>
+<img src="~/image/@item.imgfile" alt="item image" width="100" height="100" />
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"  class="btn btn-warning">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-info">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"  class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

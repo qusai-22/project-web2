@@ -1,0 +1,89 @@
+﻿@{
+    Layout = "~/Views/Shared/layoutMaster.cshtml";
+}
+@{
+    ViewData["Title"] = "dash";
+}
+<head>
+<h1>dash</h1>
+<h1>statis</h1>
+<html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Category');
+      data.addColumn('number', 'Books');
+      data.addRows([
+        ['CPU', @ViewData["d1"]],
+        ['GPU', @ViewData["d2"]],
+        ['Motherbord', @ViewData["d3"]],
+        ['Case', @ViewData["d4"]],
+        ['Powersupply', @ViewData["d5"]]
+      ]);
+      var options = {'title':'Number of Books',
+                     'width':400,
+                     'height':300};
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+</script>
+</head>
+<body>
+    <div id="chart_div"></div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class='card'>
+                <div class='card-header bg-warning text-center'>CPU</div>
+                <div class='card-body'><img src='~/image/CPUS.png' ; width='50px'></div>
+                <div class='card-footer'>
+                    Number of CPU <div> @ViewData["d1"] </div>
+                </div>;
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class='card'>
+                <div class='card-header bg-warning text-center'>GPU</div>
+                <div class='card-body'><img src='~/image/GPUS.jpg' ; width='50px'></div>
+                <div class='card-footer'>
+                    Number of GPU <div>@ViewData["d2"] </div>
+                </div>;
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class='card'>
+                <div class='card-header bg-warning text-center'>Motherbord</div>
+                <div class='card-body'><img src='~/image/Motherb.png' ; width='50px'></div>
+                <div class='card-footer'>
+                    Number of Motherbord <div>@ViewData["d3"] </div>
+                </div>;
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class='card'>
+                <div class='card-header bg-warning text-center'>Case</div>
+                <div class='card-body'><img src='~/image/cass.jpg' ; width='50px'></div>
+                <div class='card-footer'>
+                    Number of Case <div>@ViewData["d4"] </div>
+                </div>;
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class='card'>
+                <div class='card-header bg-warning text-center'>Powersupply</div>
+                <div class='card-body'><img src='~/image/powers.jpg' ; width='50px'></div>
+                <div class='card-footer'>
+                    Number of Powersupply <div>@ViewData["d5"] </div>
+                </div>;
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
